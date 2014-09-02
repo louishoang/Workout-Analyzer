@@ -3,6 +3,7 @@ require 'csv'
 require 'table_print'
 require 'pry'
 
+@size = 0
 # create a hash of workout info from CSV
 def load_workout_data(filename)
   workouts = {}
@@ -26,7 +27,7 @@ def load_workout_data(filename)
 
     workouts[workout_id][:exercises] << exercise
   end
-
+  @size = workouts.size
   workouts
 
 end
@@ -35,7 +36,8 @@ end
 data = load_workout_data('workouts.csv')
 workouts = []
 
-(1..6).each do |id|
+
+(1..@size).each do |id|
   workouts << Workout.new(id, data)
 end
 
