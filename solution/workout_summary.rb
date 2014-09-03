@@ -29,3 +29,17 @@ def load_workout_data(filename)
 end
 
 # YOUR CODE HERE
+require 'pry'
+workouts = load_workout_data("workouts.csv")
+
+workouts.each do |id, workout_data|
+  workout = Workout.new(id, workout_data)
+
+  puts "#{workout.id}"
+  puts "#{workout.date}"
+  puts "#{workout.type}"
+  puts "#{workout.duration}"
+  puts "#{workout.calories_burned}"
+end
+
+
